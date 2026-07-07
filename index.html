@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scoppo Integrativa | Gastroenterologia e Emagrecimento em SP</title>
+  <meta name="description" content="Clínica em Higienópolis com gastroenterologia, endoscopia digestiva, endoscopia bariátrica e emagrecimento saudável." />
+
+  <!-- Fontes utilizadas no site (Sora para títulos, Inter para textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       VARIÁVEIS GLOBAIS DE DESIGN (cores, tipografia, espaçamentos)
+       ============================================================ */
+    :root {
+      --cor-fundo: #0b1418;
+      --cor-superficie: #0f1c22;
+      --cor-superficie-2: #142731;
+      --cor-superficie-3: #1a3340;
+      --cor-borda: #1f3a46;
+      --cor-borda-suave: #16303a;
+      --cor-texto: #e6f1f4;
+      --cor-texto-suave: #9db3bb;
+      --cor-texto-sutil: #5f7a83;
+      --cor-marca: #4dd0e1;
+      --cor-marca-forte: #1cb5c8;
+      --cor-marca-texto: #062229;
+      --fonte-titulo: "Sora", system-ui, sans-serif;
+      --fonte-texto: "Inter", system-ui, sans-serif;
+      --largura-max: 1120px;
+    }
+
+    /* ============================================================
+       RESET BÁSICO
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--fonte-texto);
+      background: var(--cor-fundo);
+      color: var(--cor-texto);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; margin: 0; line-height: 1.15; }
+    p { margin: 0; }
+    ul { margin: 0; padding: 0; list-style: none; }
+
+    /* ============================================================
+       UTILITÁRIOS DE LAYOUT
+       ============================================================ */
+    .container { max-width: var(--largura-max); margin: 0 auto; padding: 0 1rem; }
+    @media (min-width: 768px) { .container { padding: 0 1.5rem; } }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cor-marca);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--cor-marca);
+    }
+    .eyebrow.centro { justify-content: center; }
+
+    .titulo-secao { font-size: 1.5rem; margin-top: 0.75rem; }
+    @media (min-width: 768px) { .titulo-secao { font-size: 1.875rem; } }
+
+    .texto-mudo { color: var(--cor-texto-suave); }
+    .texto-sutil { color: var(--cor-texto-sutil); }
+
+    /* Botões */
+    .botao {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.15rem;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: opacity 0.2s, background 0.2s, color 0.2s;
+    }
+    .botao-primario { background: var(--cor-marca); color: var(--cor-marca-texto); }
+    .botao-primario:hover { opacity: 0.9; }
+    .botao-secundario { border: 1px solid var(--cor-borda); color: var(--cor-texto); }
+    .botao-secundario:hover { background: var(--cor-superficie-2); }
+    .seta { font-size: 0.85em; }
+
+    /* ============================================================
+       CABEÇALHO (HEADER) FIXO
+       ============================================================ */
+    .cabecalho {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(11, 20, 24, 0.85);
+      border-bottom: 1px solid var(--cor-borda-suave);
+    }
+    .cabecalho-linha {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .logo img { height: 28px; width: auto; }
+
+    .nav-desktop { display: none; gap: 1.5rem; }
+    @media (min-width: 1024px) { .nav-desktop { display: flex; align-items: center; } }
+    .nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--cor-texto-suave);
+      transition: color 0.15s;
+    }
+    .nav-link:hover, .nav-link.ativo { color: var(--cor-texto); }
+    .nav-link.ativo { color: var(--cor-marca); }
+
+    .cabecalho-acoes { display: flex; align-items: center; gap: 0.5rem; }
+    .cta-header { display: none; }
+    @media (min-width: 640px) {
+      .cta-header {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.35rem 0.85rem;
+        border-radius: 999px;
+        background: var(--cor-marca);
+        color: var(--cor-marca-texto);
+        font-size: 12px;
+        font-weight: 600;
+      }
+    }
+    .botao-menu {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+    }
+    .botao-menu:hover { background: var(--cor-superficie-2); }
+    @media (min-width: 1024px) { .botao-menu { display: none; } }
+
+    /* Menu mobile expansível */
+    .nav-mobile {
+      display: none;
+      border-top: 1px solid var(--cor-borda-suave);
+      background: var(--cor-fundo);
+    }
+    .nav-mobile.aberto { display: block; }
+    .nav-mobile-links { display: flex; flex-direction: column; padding: 0.75rem 0; }
+    .nav-mobile-links a { padding: 0.5rem 0; font-size: 14px; color: var(--cor-texto-suave); }
+    .nav-mobile-links a.ativo { color: var(--cor-marca); }
+    .nav-mobile .cta-mobile {
+      margin-top: 0.75rem;
+      display: inline-flex;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      background: var(--cor-marca);
+      color: var(--cor-marca-texto);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       HERO — SEÇÃO DE ABERTURA
+       ============================================================ */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--cor-borda-suave);
+    }
+    .hero-brilho {
+      position: absolute;
+      top: 40px;
+      left: -160px;
+      width: 320px;
+      height: 320px;
+      background: rgba(77, 208, 225, 0.18);
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      display: grid;
+      gap: 2rem;
+      padding: 2.5rem 0;
+    }
+    @media (min-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 2.5rem;
+        padding: 3.5rem 0;
+      }
+    }
+    .hero h1 {
+      font-size: 1.875rem;
+      line-height: 1.1;
+      margin-top: 0.75rem;
+    }
+    @media (min-width: 768px) { .hero h1 { font-size: 2.75rem; } }
+    .hero h1 .destaque { color: var(--cor-marca); }
+    .hero-descricao {
+      margin-top: 1rem;
+      max-width: 28rem;
+      font-size: 14px;
+      color: var(--cor-texto-suave);
+    }
+    @media (min-width: 768px) { .hero-descricao { font-size: 16px; } }
+    .hero-acoes { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .hero-local {
+      margin-top: 1rem;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cor-texto-sutil);
+    }
+    .hero-imagem-wrap { position: relative; }
+    .hero-imagem {
+      overflow: hidden;
+      border-radius: 1rem;
+      border: 1px solid var(--cor-borda-suave);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .hero-imagem img { aspect-ratio: 4/3; width: 100%; object-fit: cover; }
+    .hero-cartao {
+      position: absolute;
+      bottom: -16px;
+      left: -16px;
+      max-width: 16rem;
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+      border: 1px solid var(--cor-borda-suave);
+      background: rgba(20, 39, 49, 0.95);
+      backdrop-filter: blur(8px);
+    }
+    .hero-cartao-titulo { font-size: 13px; font-weight: 600; }
+    .hero-cartao-sub { margin-top: 2px; font-size: 11px; color: var(--cor-texto-suave); }
+
+    /* ============================================================
+       DESTAQUES DE AUTORIDADE
+       ============================================================ */
+    .autoridade {
+      border-bottom: 1px solid var(--cor-borda-suave);
+      background: var(--cor-superficie);
+    }
+    .autoridade-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      padding: 1.5rem 0;
+    }
+    @media (min-width: 768px) {
+      .autoridade-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .autoridade-item { text-align: center; }
+    @media (min-width: 768px) { .autoridade-item { text-align: left; } }
+    .autoridade-valor {
+      font-family: var(--fonte-titulo);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--cor-marca);
+    }
+    @media (min-width: 768px) { .autoridade-valor { font-size: 1.5rem; } }
+    .autoridade-rotulo {
+      margin-top: 0.25rem;
+      font-size: 11px;
+      color: var(--cor-texto-suave);
+    }
+
+    /* ============================================================
+       SEÇÕES GENÉRICAS
+       ============================================================ */
+    .secao { padding: 2.5rem 0; }
+    @media (min-width: 768px) { .secao { padding: 3.5rem 0; } }
+    .secao-titulo { max-width: 42rem; margin: 0 auto; text-align: center; }
+    .secao-titulo p.subtitulo {
+      margin-top: 1rem;
+      font-size: 14px;
+      color: var(--cor-texto-suave);
+    }
+
+    /* Grid de cartões de especialidades */
+    .grid-especialidades {
+      margin-top: 2rem;
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) { .grid-especialidades { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .grid-especialidades { grid-template-columns: repeat(3, 1fr); } }
+
+    .cartao-especialidade {
+      padding: 1rem;
+      border-radius: 0.75rem;
+      border: 1px solid var(--cor-borda-suave);
+      background: var(--cor-superficie);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .cartao-especialidade:hover {
+      border-color: rgba(77, 208, 225, 0.5);
+      background: var(--cor-superficie-2);
+    }
+    .cartao-numero {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .cartao-numero span {
+      font-family: var(--fonte-titulo);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--cor-marca);
+    }
+    .cartao-numero .linha { flex: 1; height: 1px; background: var(--cor-borda-suave); }
+    .cartao-especialidade h3 { margin-top: 0.5rem; font-size: 15px; }
+    .cartao-especialidade p { margin-top: 0.4rem; font-size: 13px; color: var(--cor-texto-suave); }
+
+    .link-marca {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--cor-marca);
+    }
+    .link-marca:hover { text-decoration: underline; }
+    .centro-topo { margin-top: 1.5rem; text-align: center; }
+
+    /* ============================================================
+       SEÇÃO DR. TÚLIO
+       ============================================================ */
+    .secao-tulio {
+      border-top: 1px solid var(--cor-borda-suave);
+      border-bottom: 1px solid var(--cor-borda-suave);
+      background: var(--cor-superficie);
+    }
+    .tulio-grid {
+      display: grid;
+      gap: 2rem;
+      padding: 2.5rem 0;
+    }
+    @media (min-width: 768px) {
+      .tulio-grid {
+        grid-template-columns: 1fr 1.2fr;
+        align-items: center;
+        gap: 2.5rem;
+        padding: 3.5rem 0;
+      }
+    }
+    .tulio-foto {
+      overflow: hidden;
+      border-radius: 1rem;
+      border: 1px solid var(--cor-borda-suave);
+    }
+    .tulio-foto img { aspect-ratio: 4/5; width: 100%; object-fit: cover; }
+    .tulio-especialidades {
+      margin-top: 0.4rem;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: var(--cor-marca);
+    }
+    .tulio-texto { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem; font-size: 14px; color: var(--cor-texto-suave); }
+
+    /* ============================================================
+       GRID DA EQUIPE
+       ============================================================ */
+    .grid-equipe {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) { .grid-equipe { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .grid-equipe { grid-template-columns: repeat(5, 1fr); } }
+    .cartao-membro {
+      overflow: hidden;
+      border-radius: 0.75rem;
+      border: 1px solid var(--cor-borda-suave);
+      background: var(--cor-superficie);
+      transition: border-color 0.2s;
+    }
+    .cartao-membro:hover { border-color: rgba(77, 208, 225, 0.5); }
+    .cartao-membro img { aspect-ratio: 4/5; width: 100%; object-fit: cover; }
+    .cartao-membro-info { padding: 0.75rem; }
+    .cartao-membro-nome { font-size: 13px; font-weight: 600; }
+    .cartao-membro-funcao { margin-top: 0.25rem; font-size: 11px; color: var(--cor-marca); }
+
+    /* ============================================================
+       LISTA DE DIFERENCIAIS
+       ============================================================ */
+    .secao-diferenciais {
+      border-top: 1px solid var(--cor-borda-suave);
+      background: var(--cor-superficie);
+    }
+    .lista-diferenciais {
+      margin-top: 2rem;
+      display: grid;
+      gap: 0.5rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) { .lista-diferenciais { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .lista-diferenciais { grid-template-columns: repeat(3, 1fr); } }
+    .item-diferencial {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.6rem 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--cor-borda-suave);
+      background: var(--cor-superficie-2);
+      font-size: 13px;
+    }
+    .item-diferencial .checagem {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--cor-marca);
+    }
+
+    /* ============================================================
+       FAIXA DE CTA
+       ============================================================ */
+    .faixa-cta {
+      margin-top: 2rem;
+      background: linear-gradient(135deg, var(--cor-superficie-2), var(--cor-superficie-3));
+      border-top: 1px solid var(--cor-borda-suave);
+      border-bottom: 1px solid var(--cor-borda-suave);
+    }
+    .faixa-cta-conteudo {
+      display: grid;
+      gap: 1.5rem;
+      padding: 2.5rem 0;
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .faixa-cta-conteudo {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        text-align: left;
+        padding: 3rem 0;
+      }
+    }
+    .faixa-cta h2 { font-size: 1.5rem; }
+    @media (min-width: 768px) { .faixa-cta h2 { font-size: 1.875rem; } }
+    .faixa-cta p { margin-top: 0.5rem; font-size: 14px; color: var(--cor-texto-suave); }
+
+    /* ============================================================
+       RODAPÉ
+       ============================================================ */
+    .rodape {
+      margin-top: 4rem;
+      border-top: 1px solid var(--cor-borda-suave);
+      background: var(--cor-superficie);
+    }
+    .rodape-grid {
+      display: grid;
+      gap: 2rem;
+      padding: 2.5rem 0;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) { .rodape-grid { grid-template-columns: repeat(4, 1fr); } }
+    .rodape-marca { display: flex; flex-direction: column; gap: 0.75rem; }
+    @media (min-width: 768px) { .rodape-marca { grid-column: span 2; } }
+    .rodape-marca img { height: 32px; width: auto; }
+    .rodape-marca p { max-width: 24rem; font-size: 13px; color: var(--cor-texto-suave); }
+    .rodape-titulo {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cor-marca);
+    }
+    .rodape-lista { margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.35rem; font-size: 13px; color: var(--cor-texto-suave); }
+    .rodape-lista a:hover { color: var(--cor-texto); }
+    .rodape-base { border-top: 1px solid var(--cor-borda-suave); }
+    .rodape-base-conteudo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 1rem 0;
+      font-size: 11px;
+      color: var(--cor-texto-sutil);
+    }
+    @media (min-width: 768px) { .rodape-base-conteudo { flex-direction: row; } }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       CABEÇALHO DO SITE (logo + navegação + CTA WhatsApp)
+       ============================================================ -->
+  <header class="cabecalho">
+    <div class="container cabecalho-linha">
+      <a href="#topo" class="logo" aria-label="Scoppo Integrativa">
+        <img src="https://id-preview--37d96163-4dd1-498a-a8c1-110583e6abce.lovable.app/__l5e/assets-v1/e60714a5-b699-4c30-9eb3-385e05264ad0/logo-branca.png" alt="Scoppo Integrativa" />
+      </a>
+
+      <nav class="nav-desktop" aria-label="Principal">
+        <a class="nav-link ativo" href="#topo">Início</a>
+        <a class="nav-link" href="#clinica">Clínica</a>
+        <a class="nav-link" href="#especialidades">Especialidades</a>
+        <a class="nav-link" href="#emagrecimento">Emagrecimento</a>
+        <a class="nav-link" href="#equipe">Equipe</a>
+        <a class="nav-link" href="#estrutura">Estrutura</a>
+        <a class="nav-link" href="#contato">Contato</a>
+      </nav>
+
+      <div class="cabecalho-acoes">
+        <a class="cta-header" href="https://wa.me/5511975155308" target="_blank" rel="noopener noreferrer">
+          Agendar <span class="seta">→</span>
+        </a>
+        <button type="button" class="botao-menu" id="botaoMenu" aria-label="Abrir menu" aria-expanded="false">
+          <!-- Ícone hambúrguer em SVG -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu mobile (escondido por padrão) -->
+    <div class="nav-mobile" id="navMobile">
+      <div class="container nav-mobile-links">
+        <a class="ativo" href="#topo">Início</a>
+        <a href="#clinica">Clínica</a>
+        <a href="#especialidades">Especialidades</a>
+        <a href="#emagrecimento">Emagrecimento</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#estrutura">Estrutura</a>
+        <a href="#contato">Contato</a>
+        <a class="cta-mobile" href="https://wa.me/5511975155308" target="_blank" rel="noopener noreferrer">
+          Agendar pelo WhatsApp <span class="seta">→</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <!-- ============================================================
+         HERO – APRESENTAÇÃO PRINCIPAL
+         ============================================================ -->
+    <section class="hero">
+      <div class="hero-brilho" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Clínica em Higienópolis · SP</p>
+          <h1>
+            Saúde digestiva, emagrecimento e
+            <span class="destaque">acompanhamento especializado</span>.
+          </h1>
+          <p class="hero-descricao">
+            A Scoppo Integrativa une experiência médica, tecnologia e cuidado humanizado
+            em gastroenterologia, endoscopia digestiva, endoscopia bariátrica e emagrecimento saudável.
+          </p>
+          <div class="hero-acoes">
+            <a class="botao botao-primario" href="https://wa.me/5511975155308" target="_blank" rel="noopener noreferrer">
+              Agendar no WhatsApp <span class="seta">→</span>
+            </a>
+            <a class="botao botao-secundario" href="#especialidades">Conhecer tratamentos</a>
+          </div>
+          <p class="hero-local">Atendimento em Higienópolis, São Paulo</p>
+        </div>
+
+        <div class="hero-imagem-wrap">
+          <div class="hero-imagem">
+            <img src="https://id-preview--37d96163-4dd1-498a-a8c1-110583e6abce.lovable.app/__l5e/assets-v1/8a1f9743-1dba-4710-8881-5f4772cc9c95/clinica.jpg" alt="Estrutura da Clínica Scoppo Integrativa" />
+          </div>
+          <div class="hero-cartao">
+            <p class="hero-cartao-titulo">Scoppo Integrativa</p>
+            <p class="hero-cartao-sub">Gastroenterologia · Endoscopia · Emagrecimento</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         AUTORIDADE – NÚMEROS E DESTAQUES
+         ============================================================ -->
+    <section class="autoridade">
+      <div class="container autoridade-grid">
+        <div class="autoridade-item">
+          <p class="autoridade-valor">20+</p>
+          <p class="autoridade-rotulo">Anos de experiência médica</p>
+        </div>
+        <div class="autoridade-item">
+          <p class="autoridade-valor">Gastro</p>
+          <p class="autoridade-rotulo">Endoscopia digestiva avançada</p>
+        </div>
+        <div class="autoridade-item">
+          <p class="autoridade-valor">Bariátrica</p>
+          <p class="autoridade-rotulo">Procedimentos minimamente invasivos</p>
+        </div>
+        <div class="autoridade-item">
+          <p class="autoridade-valor">Multi</p>
+          <p class="autoridade-rotulo">Equipe multiprofissional</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ESPECIALIDADES – GRID DE 6 CARTÕES
+         ============================================================ -->
+    <section class="secao container" id="especialidades">
+      <div class="secao-titulo">
+        <p class="eyebrow centro">Especialidades</p>
+        <h2 class="titulo-secao">Cuidado integrado para saúde digestiva e emagrecimento.</h2>
+      </div>
+
+      <!-- Cards renderizados dinamicamente via JavaScript -->
+      <div class="grid-especialidades" id="gridEspecialidades"></div>
+
+      <div class="centro-topo">
+        <a class="link-marca" href="#especialidades">Ver todas as especialidades <span class="seta">→</span></a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DR. TÚLIO – DIREÇÃO MÉDICA
+         ============================================================ -->
+    <section class="secao-tulio" id="clinica">
+      <div class="container tulio-grid">
+        <div class="tulio-foto">
+          <img src="https://id-preview--37d96163-4dd1-498a-a8c1-110583e6abce.lovable.app/__l5e/assets-v1/c9407aa9-7359-44a8-9b39-a36fe312a6ea/tulio.jpeg" alt="Dr. Túlio Medeiros" />
+        </div>
+        <div>
+          <p class="eyebrow">Direção médica</p>
+          <h2 class="titulo-secao">Dr. Túlio Medeiros</h2>
+          <p class="tulio-especialidades">Gastroenterologia · Endoscopia Digestiva · Endoscopia Bariátrica</p>
+          <div class="tulio-texto">
+            <p>
+              Médico formado pela Universidade Federal da Paraíba, especialista em Gastroenterologia
+              e Endoscopia Digestiva, com formação complementar pelo Hospital Israelita Albert Einstein
+              e MBA em Gestão de Negócios de Saúde pela FGV.
+            </p>
+            <p>
+              Mais de 20 anos de experiência em endoscopia digestiva avançada e procedimentos
+              para tratamento da obesidade — Balão Intragástrico, Gastroplastia Endoscópica
+              e Endoscopia Bariátrica.
+            </p>
+          </div>
+          <a class="link-marca" href="#equipe" style="margin-top: 1.25rem;">
+            Conhecer trajetória <span class="seta">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EQUIPE – GRID DE PROFISSIONAIS
+         ============================================================ -->
+    <section class="secao container" id="equipe">
+      <div class="secao-titulo">
+        <p class="eyebrow centro">Equipe</p>
+        <h2 class="titulo-secao">Uma equipe integrada para uma jornada completa.</h2>
+      </div>
+
+      <!-- Cards da equipe renderizados via JavaScript -->
+      <div class="grid-equipe" id="gridEquipe"></div>
+
+      <div class="centro-topo">
+        <a class="link-marca" href="#equipe">Ver equipe completa <span class="seta">→</span></a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DIFERENCIAIS – LISTA DE VANTAGENS
+         ============================================================ -->
+    <section class="secao-diferenciais" id="emagrecimento">
+      <div class="container secao">
+        <div class="secao-titulo">
+          <p class="eyebrow centro">Por que a Scoppo</p>
+          <h2 class="titulo-secao">Diferenciais construídos a partir do cuidado.</h2>
+        </div>
+
+        <!-- Lista renderizada via JavaScript -->
+        <ul class="lista-diferenciais" id="listaDiferenciais"></ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FAIXA CTA – CHAMADA PARA AGENDAMENTO
+         ============================================================ -->
+    <section class="faixa-cta" id="estrutura">
+      <div class="container faixa-cta-conteudo">
+        <div>
+          <h2>Pronto para começar sua jornada?</h2>
+          <p>Agende uma avaliação e conheça o cuidado integrado da Scoppo Integrativa.</p>
+        </div>
+        <a class="botao botao-primario" href="https://wa.me/5511975155308" target="_blank" rel="noopener noreferrer">
+          Agendar no WhatsApp <span class="seta">→</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       RODAPÉ DO SITE
+       ============================================================ -->
+  <footer class="rodape" id="contato">
+    <div class="container rodape-grid">
+      <div class="rodape-marca">
+        <img src="https://id-preview--37d96163-4dd1-498a-a8c1-110583e6abce.lovable.app/__l5e/assets-v1/e60714a5-b699-4c30-9eb3-385e05264ad0/logo-branca.png" alt="Scoppo Integrativa" />
+        <p>
+          Gastroenterologia, endoscopia digestiva, endoscopia bariátrica e emagrecimento saudável
+          em Higienópolis, São Paulo.
+        </p>
+      </div>
+
+      <div>
+        <p class="rodape-titulo">Navegar</p>
+        <ul class="rodape-lista">
+          <li><a href="#clinica">Clínica</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#emagrecimento">Emagrecimento</a></li>
+          <li><a href="#equipe">Equipe</a></li>
+          <li><a href="#estrutura">Estrutura</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="rodape-titulo">Contato</p>
+        <ul class="rodape-lista">
+          <li><a href="https://wa.me/5511975155308" target="_blank" rel="noopener noreferrer">WhatsApp (11) 97515-5308</a></li>
+          <li><a href="tel:+551128835691">(11) 2883-5691</a></li>
+          <li><a href="mailto:contato@clinicascoppo.com.br">contato@clinicascoppo.com.br</a></li>
+          <li style="padding-top: 4px;">Rua Mato Grosso, 306<br />Higienópolis · São Paulo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rodape-base">
+      <div class="container rodape-base-conteudo">
+        <p>© <span id="anoAtual"></span> Clínica Scoppo Integrativa</p>
+        <p>Higienópolis · São Paulo</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ============================================================
+       DADOS DINÂMICOS DO SITE
+       (mesma estrutura do site original, agora em objetos JS)
+       ============================================================ */
+
+    // Lista das 6 especialidades exibidas na home
+    const especialidades = [
+      { titulo: "Gastroenterologia", descricao: "Prevenção, diagnóstico e tratamento das doenças do aparelho digestivo, com avaliação clínica completa." },
+      { titulo: "Endoscopia Digestiva Alta", descricao: "Exame que permite avaliar esôfago, estômago e duodeno com precisão e segurança." },
+      { titulo: "Colonoscopia", descricao: "Avaliação do intestino grosso para rastreio, diagnóstico e tratamento de alterações." },
+      { titulo: "Retossigmoidoscopia", descricao: "Exame endoscópico do reto e da porção final do cólon, indicado em casos selecionados." },
+      { titulo: "Anuscopia", descricao: "Avaliação do canal anal para diagnóstico de afecções proctológicas." },
+      { titulo: "Endoscopia Terapêutica", descricao: "Procedimentos endoscópicos para tratamento de lesões e condições do aparelho digestivo." }
+    ];
+
+    // Equipe de profissionais da clínica
+    const baseAssets = "https://id-preview--37d96163-4dd1-498a-a8c1-110583e6abce.lovable.app/__l5e/assets-v1";
+    const equipe = [
+      { nome: "Dr. Túlio Medeiros",        funcao: "Direção médica · Gastroenterologia e Endoscopia", img: baseAssets + "/c9407aa9-7359-44a8-9b39-a36fe312a6ea/tulio.jpeg" },
+      { nome: "Dra. Ariane Longo",         funcao: "Nutricionista",                                   img: baseAssets + "/2630047c-7fdc-4424-b88f-e06e8c0d07fa/ariane.jpg" },
+      { nome: "Dra. Claudia Gonçalves",    funcao: "Nutrição · Reeducação alimentar",                 img: baseAssets + "/22e3ec63-7774-4ed2-a574-3275b63e2518/claudia.jpg" },
+      { nome: "Dra. Helen Coral",          funcao: "Psicologia Clínica",                              img: baseAssets + "/0d688eda-797a-4a63-bdc8-d3e89b4fdd2a/helen.jpg" },
+      { nome: "Dr. Marcos Moraes de Oliveira", funcao: "Preparador Físico",                           img: baseAssets + "/1b1da8bd-33a8-4780-a847-f38f5f9a4a3c/marcos.jpg" }
+    ];
+
+    // Diferenciais da clínica
+    const diferenciais = [
+      "Atendimento personalizado e humanizado",
+      "Mais de 20 anos de experiência",
+      "Procedimentos minimamente invasivos",
+      "Tecnologia avançada de diagnóstico",
+      "Acompanhamento em toda a jornada",
+      "Integração saúde digestiva e peso",
+      "Equipe multiprofissional",
+      "Foco em resultados sustentáveis",
+      "Baseado em evidências científicas"
+    ];
+
+    /* ============================================================
+       RENDERIZAÇÃO – MONTA OS CARDS NA PÁGINA
+       ============================================================ */
+
+    // Renderiza os cartões de especialidades
+    function renderizarEspecialidades() {
+      const container = document.getElementById("gridEspecialidades");
+      const html = especialidades.map(function (item, indice) {
+        const numero = String(indice + 1).padStart(2, "0");
+        return (
+          '<article class="cartao-especialidade">' +
+            '<div class="cartao-numero"><span>' + numero + '</span><span class="linha"></span></div>' +
+            '<h3>' + item.titulo + '</h3>' +
+            '<p>' + item.descricao + '</p>' +
+          '</article>'
+        );
+      }).join("");
+      container.innerHTML = html;
+    }
+
+    // Renderiza os cartões da equipe
+    function renderizarEquipe() {
+      const container = document.getElementById("gridEquipe");
+      const html = equipe.map(function (pessoa) {
+        return (
+          '<article class="cartao-membro">' +
+            '<img src="' + pessoa.img + '" alt="' + pessoa.nome + '" />' +
+            '<div class="cartao-membro-info">' +
+              '<p class="cartao-membro-nome">' + pessoa.nome + '</p>' +
+              '<p class="cartao-membro-funcao">' + pessoa.funcao + '</p>' +
+            '</div>' +
+          '</article>'
+        );
+      }).join("");
+      container.innerHTML = html;
+    }
+
+    // Renderiza a lista de diferenciais
+    function renderizarDiferenciais() {
+      const container = document.getElementById("listaDiferenciais");
+      const iconeCheck = '<svg class="checagem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+      const html = diferenciais.map(function (texto) {
+        return '<li class="item-diferencial">' + iconeCheck + '<span>' + texto + '</span></li>';
+      }).join("");
+      container.innerHTML = html;
+    }
+
+    /* ============================================================
+       INTERAÇÕES DA INTERFACE
+       ============================================================ */
+
+    // Alterna a exibição do menu mobile
+    function configurarMenuMobile() {
+      const botao = document.getElementById("botaoMenu");
+      const menu = document.getElementById("navMobile");
+      botao.addEventListener("click", function () {
+        const aberto = menu.classList.toggle("aberto");
+        botao.setAttribute("aria-expanded", aberto ? "true" : "false");
+        botao.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
+      });
+      // Fecha o menu ao clicar em qualquer link interno
+      menu.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          menu.classList.remove("aberto");
+          botao.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
+    // Atualiza o ano exibido no rodapé
+    function atualizarAno() {
+      document.getElementById("anoAtual").textContent = new Date().getFullYear();
+    }
+
+    // Inicialização geral ao carregar a página
+    document.addEventListener("DOMContentLoaded", function () {
+      renderizarEspecialidades();
+      renderizarEquipe();
+      renderizarDiferenciais();
+      configurarMenuMobile();
+      atualizarAno();
+    });
+  </script>
+</body>
+</html>

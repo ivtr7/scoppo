@@ -5,271 +5,121 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scoppo Integrativa | Gastroenterologia e Emagrecimento em SP</title>
   <meta name="description" content="Clínica em Higienópolis com gastroenterologia, endoscopia digestiva, endoscopia bariátrica e emagrecimento saudável." />
-
-  <!-- Fontes utilizadas no site (Sora para títulos, Inter para textos) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/estilo.css" />
 </head>
-<body>
+<body data-pagina="home">
+  <div id="cabecalho"></div>
 
-  <!-- ============================================================
-       CABEÇALHO DO SITE (logo + navegação + CTA WhatsApp)
-       ============================================================ -->
-  <header class="cabecalho">
-    <div class="container cabecalho-linha">
-      <a href="#topo" class="logo" aria-label="Scoppo Integrativa">
-        <img src="https://id-preview--37d96163-4dd1-498a-a8c1-110583e6abce.lovable.app/__l5e/assets-v1/e60714a5-b699-4c30-9eb3-385e05264ad0/logo-branca.png" alt="Scoppo Integrativa" />
-      </a>
-
-      <nav class="nav-desktop" aria-label="Principal">
-        <a class="nav-link ativo" href="#topo">Início</a>
-        <a class="nav-link" href="#clinica">Clínica</a>
-        <a class="nav-link" href="#especialidades">Especialidades</a>
-        <a class="nav-link" href="#emagrecimento">Emagrecimento</a>
-        <a class="nav-link" href="#equipe">Equipe</a>
-        <a class="nav-link" href="#estrutura">Estrutura</a>
-        <a class="nav-link" href="#contato">Contato</a>
-      </nav>
-
-      <div class="cabecalho-acoes">
-        <a class="cta-header" href="https://wa.me/5511975155308" target="_blank" rel="noopener noreferrer">
-          Agendar <span class="seta">→</span>
-        </a>
-        <button type="button" class="botao-menu" id="botaoMenu" aria-label="Abrir menu" aria-expanded="false">
-          <!-- Ícone hambúrguer em SVG -->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Menu mobile (escondido por padrão) -->
-    <div class="nav-mobile" id="navMobile">
-      <div class="container nav-mobile-links">
-        <a class="ativo" href="#topo">Início</a>
-        <a href="#clinica">Clínica</a>
-        <a href="#especialidades">Especialidades</a>
-        <a href="#emagrecimento">Emagrecimento</a>
-        <a href="#equipe">Equipe</a>
-        <a href="#estrutura">Estrutura</a>
-        <a href="#contato">Contato</a>
-        <a class="cta-mobile" href="https://wa.me/5511975155308" target="_blank" rel="noopener noreferrer">
-          Agendar pelo WhatsApp <span class="seta">→</span>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <main id="topo">
-
-    <!-- ============================================================
-         HERO – APRESENTAÇÃO PRINCIPAL
-         ============================================================ -->
-    <section class="hero">
-      <div class="hero-brilho" aria-hidden="true"></div>
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">Clínica em Higienópolis · SP</p>
-          <h1>
-            Saúde digestiva, emagrecimento e
-            <span class="destaque">acompanhamento especializado</span>.
-          </h1>
-          <p class="hero-descricao">
-            A Scoppo Integrativa une experiência médica, tecnologia e cuidado humanizado
-            em gastroenterologia, endoscopia digestiva, endoscopia bariátrica e emagrecimento saudável.
-          </p>
-          <div class="hero-acoes">
-            <a class="botao botao-primario" href="https://wa.me/5511975155308" target="_blank" rel="noopener noreferrer">
-              Agendar no WhatsApp <span class="seta">→</span>
-            </a>
-            <a class="botao botao-secundario" href="#especialidades">Conhecer tratamentos</a>
-          </div>
-          <p class="hero-local">Atendimento em Higienópolis, São Paulo</p>
-        </div>
-
-        <div class="hero-imagem-wrap">
-          <div class="hero-imagem">
-            <img src="https://id-preview--37d96163-4dd1-498a-a8c1-110583e6abce.lovable.app/__l5e/assets-v1/8a1f9743-1dba-4710-8881-5f4772cc9c95/clinica.jpg" alt="Estrutura da Clínica Scoppo Integrativa" />
-          </div>
-          <div class="hero-cartao">
-            <p class="hero-cartao-titulo">Scoppo Integrativa</p>
-            <p class="hero-cartao-sub">Gastroenterologia · Endoscopia · Emagrecimento</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         AUTORIDADE – NÚMEROS E DESTAQUES
-         ============================================================ -->
-    <section class="autoridade">
-      <div class="container autoridade-grid">
-        <div class="autoridade-item">
-          <p class="autoridade-valor">20+</p>
-          <p class="autoridade-rotulo">Anos de experiência médica</p>
-        </div>
-        <div class="autoridade-item">
-          <p class="autoridade-valor">Gastro</p>
-          <p class="autoridade-rotulo">Endoscopia digestiva avançada</p>
-        </div>
-        <div class="autoridade-item">
-          <p class="autoridade-valor">Bariátrica</p>
-          <p class="autoridade-rotulo">Procedimentos minimamente invasivos</p>
-        </div>
-        <div class="autoridade-item">
-          <p class="autoridade-valor">Multi</p>
-          <p class="autoridade-rotulo">Equipe multiprofissional</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         ESPECIALIDADES – GRID DE 6 CARTÕES
-         ============================================================ -->
-    <section class="secao container" id="especialidades">
-      <div class="secao-titulo">
-        <p class="eyebrow centro">Especialidades</p>
-        <h2 class="titulo-secao">Cuidado integrado para saúde digestiva e emagrecimento.</h2>
-      </div>
-
-      <!-- Cards renderizados dinamicamente via JavaScript -->
-      <div class="grid-especialidades" id="gridEspecialidades"></div>
-
-      <div class="centro-topo">
-        <a class="link-marca" href="#especialidades">Ver todas as especialidades <span class="seta">→</span></a>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         DR. TÚLIO – DIREÇÃO MÉDICA
-         ============================================================ -->
-    <section class="secao-tulio" id="clinica">
-      <div class="container tulio-grid">
-        <div class="tulio-foto">
-          <img src="https://id-preview--37d96163-4dd1-498a-a8c1-110583e6abce.lovable.app/__l5e/assets-v1/c9407aa9-7359-44a8-9b39-a36fe312a6ea/tulio.jpeg" alt="Dr. Túlio Medeiros" />
-        </div>
-        <div>
-          <p class="eyebrow">Direção médica</p>
-          <h2 class="titulo-secao">Dr. Túlio Medeiros</h2>
-          <p class="tulio-especialidades">Gastroenterologia · Endoscopia Digestiva · Endoscopia Bariátrica</p>
-          <div class="tulio-texto">
-            <p>
-              Médico formado pela Universidade Federal da Paraíba, especialista em Gastroenterologia
-              e Endoscopia Digestiva, com formação complementar pelo Hospital Israelita Albert Einstein
-              e MBA em Gestão de Negócios de Saúde pela FGV.
-            </p>
-            <p>
-              Mais de 20 anos de experiência em endoscopia digestiva avançada e procedimentos
-              para tratamento da obesidade — Balão Intragástrico, Gastroplastia Endoscópica
-              e Endoscopia Bariátrica.
-            </p>
-          </div>
-          <a class="link-marca" href="#equipe" style="margin-top: 1.25rem;">
-            Conhecer trajetória <span class="seta">→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         EQUIPE – GRID DE PROFISSIONAIS
-         ============================================================ -->
-    <section class="secao container" id="equipe">
-      <div class="secao-titulo">
-        <p class="eyebrow centro">Equipe</p>
-        <h2 class="titulo-secao">Uma equipe integrada para uma jornada completa.</h2>
-      </div>
-
-      <!-- Cards da equipe renderizados via JavaScript -->
-      <div class="grid-equipe" id="gridEquipe"></div>
-
-      <div class="centro-topo">
-        <a class="link-marca" href="#equipe">Ver equipe completa <span class="seta">→</span></a>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         DIFERENCIAIS – LISTA DE VANTAGENS
-         ============================================================ -->
-    <section class="secao-diferenciais" id="emagrecimento">
-      <div class="container secao">
-        <div class="secao-titulo">
-          <p class="eyebrow centro">Por que a Scoppo</p>
-          <h2 class="titulo-secao">Diferenciais construídos a partir do cuidado.</h2>
-        </div>
-
-        <!-- Lista renderizada via JavaScript -->
-        <ul class="lista-diferenciais" id="listaDiferenciais"></ul>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         FAIXA CTA – CHAMADA PARA AGENDAMENTO
-         ============================================================ -->
-    <section class="faixa-cta" id="estrutura">
-      <div class="container faixa-cta-conteudo">
-        <div>
-          <h2>Pronto para começar sua jornada?</h2>
-          <p>Agende uma avaliação e conheça o cuidado integrado da Scoppo Integrativa.</p>
-        </div>
-        <a class="botao botao-primario" href="https://wa.me/5511975155308" target="_blank" rel="noopener noreferrer">
-          Agendar no WhatsApp <span class="seta">→</span>
-        </a>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ============================================================
-       RODAPÉ DO SITE
-       ============================================================ -->
-  <footer class="rodape" id="contato">
-    <div class="container rodape-grid">
-      <div class="rodape-marca">
-        <img src="https://id-preview--37d96163-4dd1-498a-a8c1-110583e6abce.lovable.app/__l5e/assets-v1/e60714a5-b699-4c30-9eb3-385e05264ad0/logo-branca.png" alt="Scoppo Integrativa" />
-        <p>
-          Gastroenterologia, endoscopia digestiva, endoscopia bariátrica e emagrecimento saudável
-          em Higienópolis, São Paulo.
-        </p>
-      </div>
-
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container hero-inner">
       <div>
-        <p class="rodape-titulo">Navegar</p>
-        <ul class="rodape-lista">
-          <li><a href="#clinica">Clínica</a></li>
-          <li><a href="#especialidades">Especialidades</a></li>
-          <li><a href="#emagrecimento">Emagrecimento</a></li>
-          <li><a href="#equipe">Equipe</a></li>
-          <li><a href="#estrutura">Estrutura</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
+        <span class="sobrancelha">Clínica em Higienópolis · SP</span>
+        <h1>Saúde digestiva, emagrecimento e <span class="destaque">acompanhamento especializado</span>.</h1>
+        <p class="descricao">A Scoppo Integrativa une experiência médica, tecnologia e cuidado humanizado em gastroenterologia, endoscopia digestiva, endoscopia bariátrica e emagrecimento saudável.</p>
+        <div class="hero-acoes">
+          <a href="https://wa.me/5511975155308" target="_blank" rel="noopener noreferrer" class="botao botao-marca grande">Agendar no WhatsApp <span class="seta">→</span></a>
+          <a href="especialidades.html" class="botao botao-contorno">Conhecer tratamentos</a>
+        </div>
+        <p class="hero-endereco">Atendimento em Higienópolis, São Paulo</p>
       </div>
-
-      <div>
-        <p class="rodape-titulo">Contato</p>
-        <ul class="rodape-lista">
-          <li><a href="https://wa.me/5511975155308" target="_blank" rel="noopener noreferrer">WhatsApp (11) 97515-5308</a></li>
-          <li><a href="tel:+551128835691">(11) 2883-5691</a></li>
-          <li><a href="mailto:contato@clinicascoppo.com.br">contato@clinicascoppo.com.br</a></li>
-          <li style="padding-top: 4px;">Rua Mato Grosso, 306<br />Higienópolis · São Paulo</li>
-        </ul>
+      <div class="hero-imagem-wrap">
+        <div class="hero-imagem">
+          <img src="assets/foto-clinica.jpg" alt="Estrutura da Clínica Scoppo Integrativa" />
+        </div>
+        <div class="hero-cartao-flutuante">
+          <strong>Scoppo Integrativa</strong>
+          <span>Gastroenterologia · Endoscopia · Emagrecimento</span>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="rodape-base">
-      <div class="container rodape-base-conteudo">
-        <p>© <span id="anoAtual"></span> Clínica Scoppo Integrativa</p>
-        <p>Higienópolis · São Paulo</p>
+  <!-- FAIXA DE AUTORIDADE -->
+  <section class="faixa-autoridade">
+    <div class="container faixa-autoridade-grid">
+      <div class="destaque-item"><p class="destaque-valor">20+</p><p class="destaque-rotulo">Anos de experiência médica</p></div>
+      <div class="destaque-item"><p class="destaque-valor">Gastro</p><p class="destaque-rotulo">Endoscopia digestiva avançada</p></div>
+      <div class="destaque-item"><p class="destaque-valor">Bariátrica</p><p class="destaque-rotulo">Procedimentos minimamente invasivos</p></div>
+      <div class="destaque-item"><p class="destaque-valor">Multi</p><p class="destaque-rotulo">Equipe multiprofissional</p></div>
+    </div>
+  </section>
+
+  <!-- ESPECIALIDADES -->
+  <section class="secao">
+    <div class="container">
+      <div class="cabecalho-secao">
+        <span class="sobrancelha centralizada">Especialidades</span>
+        <h2>Cuidado integrado para saúde digestiva e emagrecimento.</h2>
+      </div>
+      <div class="grade-cartoes" id="listaEspecialidadesPreview"></div>
+      <div style="text-align:center; margin-top: 1.5rem">
+        <a href="especialidades.html" class="cartao-link">Ver todas as especialidades <span class="seta">→</span></a>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script src="script.js" defer></script>
+  <!-- DR TULIO -->
+  <section class="secao borda-y superficie">
+    <div class="container tulio-inner">
+      <div class="tulio-foto">
+        <img src="assets/tulio1.jpeg" alt="Dr. Túlio Medeiros" />
+      </div>
+      <div class="tulio-conteudo">
+        <span class="sobrancelha">Direção médica</span>
+        <h2>Dr. Túlio Medeiros</h2>
+        <p class="tulio-especialidade">Gastroenterologia · Endoscopia Digestiva · Endoscopia Bariátrica</p>
+        <div class="tulio-texto">
+          <p>Médico formado pela Universidade Federal da Paraíba, especialista em Gastroenterologia e Endoscopia Digestiva, com formação complementar pelo Hospital Israelita Albert Einstein e MBA em Gestão de Negócios de Saúde pela FGV.</p>
+          <p>Mais de 20 anos de experiência em endoscopia digestiva avançada e procedimentos para tratamento da obesidade — Balão Intragástrico, Gastroplastia Endoscópica e Endoscopia Bariátrica.</p>
+        </div>
+        <a href="dr-tulio.html" class="cartao-link" style="margin-top:1.25rem">Conhecer trajetória <span class="seta">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPE PREVIEW -->
+  <section class="secao">
+    <div class="container">
+      <div class="cabecalho-secao">
+        <span class="sobrancelha centralizada">Equipe</span>
+        <h2>Uma equipe integrada para uma jornada completa.</h2>
+      </div>
+      <div class="equipe-grade" id="listaEquipePreview"></div>
+      <div style="text-align:center; margin-top: 1.5rem">
+        <a href="equipe.html" class="cartao-link">Ver equipe completa <span class="seta">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="secao borda-topo superficie">
+    <div class="container">
+      <div class="cabecalho-secao">
+        <span class="sobrancelha centralizada">Por que a Scoppo</span>
+        <h2>Diferenciais construídos a partir do cuidado.</h2>
+      </div>
+      <ul class="diferenciais-lista">
+        <li><span class="check">✓</span> Atendimento personalizado e humanizado</li>
+        <li><span class="check">✓</span> Mais de 20 anos de experiência</li>
+        <li><span class="check">✓</span> Procedimentos minimamente invasivos</li>
+        <li><span class="check">✓</span> Tecnologia avançada de diagnóstico</li>
+        <li><span class="check">✓</span> Acompanhamento em toda a jornada</li>
+        <li><span class="check">✓</span> Integração saúde digestiva e peso</li>
+        <li><span class="check">✓</span> Equipe multiprofissional</li>
+        <li><span class="check">✓</span> Foco em resultados sustentáveis</li>
+        <li><span class="check">✓</span> Baseado em evidências científicas</li>
+      </ul>
+    </div>
+  </section>
+
+  <div id="cta"></div>
+  <div id="rodape"></div>
+
+  <script src="js/script.js"></script>
 </body>
 </html>

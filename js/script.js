@@ -28,6 +28,7 @@ const LINKS_NAV = [
   { href: "clinica.html", rotulo: "Clínica" },
   { href: "especialidades.html", rotulo: "Especialidades" },
   { href: "emagrecimento.html", rotulo: "Emagrecimento" },
+  { href: "tecnologias.html", rotulo: "Tecnologias" },
   { href: "equipe.html", rotulo: "Equipe" },
   { href: "estrutura.html", rotulo: "Estrutura" },
   { href: "contato.html", rotulo: "Contato" },
@@ -42,6 +43,8 @@ const ESPECIALIDADES = [
   { titulo: "Anuscopia", descricao: "Avaliação do canal anal para diagnóstico de afecções proctológicas." },
   { titulo: "Endoscopia Terapêutica", descricao: "Procedimentos endoscópicos para tratamento de lesões e condições do aparelho digestivo." },
   { titulo: "Endoscopia Bariátrica", descricao: "Procedimentos minimamente invasivos para auxiliar no tratamento da obesidade e reganho de peso." },
+  { titulo: "Balão Gástrico", descricao: "Recurso endoscópico utilizado como apoio ao emagrecimento, sempre com indicação médica e acompanhamento multiprofissional." },
+  { titulo: "Plasma de Argônio", descricao: "Tecnologia endoscópica indicada em casos selecionados, incluindo estratégias para pacientes com reganho de peso após bariátrica." },
   { titulo: "Tratamento Clínico da Obesidade", descricao: "Abordagem médica integrada para controle de peso e melhora da saúde metabólica." },
   { titulo: "Nutrição Clínica", descricao: "Acompanhamento nutricional individualizado, integrado ao plano médico de cada paciente." },
   { titulo: "Psicologia Aplicada ao Emagrecimento", descricao: "Apoio para o desenvolvimento de hábitos saudáveis, controle emocional e mudanças comportamentais." },
@@ -51,12 +54,26 @@ const ESPECIALIDADES = [
 
 // Dados de tratamentos exibidos na página de emagrecimento
 const TRATAMENTOS = [
-  { numero: "01", titulo: "Balão Intragástrico", descricao: "Procedimento endoscópico que auxilia na reeducação alimentar e no controle de peso, acompanhado por equipe multiprofissional." },
+  { numero: "01", titulo: "Balão Gástrico", descricao: "Procedimento endoscópico que auxilia na reeducação alimentar e no controle de peso, acompanhado por equipe multiprofissional." },
   { numero: "02", titulo: "Gastroplastia Endoscópica", descricao: "Técnica minimamente invasiva que reduz a capacidade gástrica por via endoscópica, sem cortes externos." },
   { numero: "03", titulo: "Plasma de Argônio", descricao: "Recurso endoscópico utilizado em casos específicos, como reganho de peso após cirurgia bariátrica." },
   { numero: "04", titulo: "Tratamento Clínico da Obesidade", descricao: "Abordagem médica integrada, considerando histórico, metabolismo e hábitos de cada paciente." },
   { numero: "05", titulo: "Terapias Injetáveis", descricao: "Quando indicadas, integradas a um plano médico individualizado e seguro." },
   { numero: "06", titulo: "Acompanhamento Multiprofissional", descricao: "Nutrição, psicologia, avaliação física e suporte comportamental ao longo da jornada." },
+];
+
+// Tecnologias e recursos diagnósticos/terapêuticos
+const TECNOLOGIAS = [
+  { titulo: "Bioimpedância moderna", descricao: "Avalia composição corporal, massa magra, percentual de gordura e distribuição hídrica para apoiar condutas mais individualizadas." },
+  { titulo: "Testes Genéticos", descricao: "Ajudam a investigar predisposições relacionadas a metabolismo, inflamação, comportamento alimentar e resposta a diferentes estratégias de cuidado." },
+  { titulo: "Nutrigenético", descricao: "Relaciona características genéticas à resposta do organismo aos alimentos, auxiliando na personalização do acompanhamento nutricional." },
+  { titulo: "Hipersensibilidade alimentar", descricao: "Pode contribuir para a investigação de respostas alimentares em casos selecionados, sempre dentro de uma avaliação clínica completa." },
+  { titulo: "Microbioma intestinal", descricao: "Auxilia na compreensão do equilíbrio intestinal e de como ele pode impactar digestão, imunidade, metabolismo e bem-estar." },
+  { titulo: "Marcadores de envelhecimento", descricao: "Reúnem indicadores clínicos e metabólicos que ajudam a acompanhar sinais relacionados à longevidade, energia e saúde global." },
+  { titulo: "Teste de Apneia do Sono", descricao: "Apoia a triagem e o acompanhamento de distúrbios do sono que podem interferir em peso, disposição, saúde cardiovascular e qualidade de vida." },
+  { titulo: "Balão Gástrico", descricao: "Tecnologia endoscópica utilizada em casos indicados para apoio ao emagrecimento, com foco em segurança e acompanhamento multiprofissional." },
+  { titulo: "Plasma de Argônio", descricao: "Recurso endoscópico empregado em situações específicas, como estratégias para pacientes com reganho de peso após cirurgia bariátrica." },
+  { titulo: "Canetas Emagrecedoras", descricao: "Medicamentos injetáveis que, quando indicados, podem integrar um plano médico estruturado para controle de peso e saúde metabólica." },
 ];
 
 // Perguntas frequentes exibidas na página de emagrecimento
@@ -119,7 +136,7 @@ const ESTRUTURA = [
 const BLOCOS_TULIO = [
   { titulo: "Formação", itens: ["Medicina — Universidade Federal da Paraíba", "Especialista em Gastroenterologia e Endoscopia Digestiva", "Formação em doenças funcionais digestivas — Hospital Israelita Albert Einstein", "MBA em Gestão de Negócios de Saúde — FGV"] },
   { titulo: "Sociedades", itens: ["Sociedade Brasileira de Endoscopia Digestiva", "Sociedade Brasileira de Motilidade Digestiva", "American Society for Gastrointestinal Endoscopy"] },
-  { titulo: "Áreas de atuação", itens: ["Gastroenterologia", "Endoscopia Digestiva", "Endoscopia Bariátrica", "Balão Intragástrico", "Gastroplastia Endoscópica", "Tratamento da obesidade"] },
+  { titulo: "Áreas de atuação", itens: ["Gastroenterologia", "Endoscopia Digestiva", "Endoscopia Bariátrica", "Balão Gástrico", "Gastroplastia Endoscópica", "Plasma de Argônio", "Tratamento da obesidade"] },
 ];
 
 // Utilitário para escapar HTML em textos dinâmicos
@@ -217,6 +234,7 @@ function montarRodape() {
             <li><a href="clinica.html">Clínica</a></li>
             <li><a href="especialidades.html">Especialidades</a></li>
             <li><a href="emagrecimento.html">Emagrecimento</a></li>
+            <li><a href="tecnologias.html">Tecnologias</a></li>
             <li><a href="equipe.html">Equipe</a></li>
             <li><a href="estrutura.html">Estrutura</a></li>
             <li><a href="contato.html">Contato</a></li>
@@ -271,6 +289,22 @@ function renderizarTratamentos() {
   alvo.innerHTML = TRATAMENTOS.map((t) => `
     <article class="cartao superficie-2">
       <span class="cartao-numero">${esc(t.numero)}</span>
+      <h3>${esc(t.titulo)}</h3>
+      <p>${esc(t.descricao)}</p>
+    </article>
+  `).join("");
+}
+
+// Renderiza cartões da página Tecnologias
+function renderizarTecnologias() {
+  const alvo = document.getElementById("listaTecnologias");
+  if (!alvo) return;
+  alvo.innerHTML = TECNOLOGIAS.map((t, i) => `
+    <article class="cartao">
+      <div class="cartao-topo">
+        <span class="cartao-numero">${String(i + 1).padStart(2, "0")}</span>
+        <span class="cartao-linha"></span>
+      </div>
       <h3>${esc(t.titulo)}</h3>
       <p>${esc(t.descricao)}</p>
     </article>
@@ -332,7 +366,7 @@ function renderizarBlocosTulio() {
   alvo.innerHTML = blocos + `
     <div class="bloco-tulio destaque">
       <span class="sobrancelha">Filosofia</span>
-      <p>O emagrecimento deve ser consequência de uma transformação da saúde física e emocional. Por isso, cada paciente é avaliado individualmente, com foco em segurança, acolhimento e resultados sustentáveis.</p>
+      <p>O emagrecimento saudável e duradouro começa com uma saúde digestiva equilibrada. Nossa filosofia é promover uma transformação completa da saúde física, digestiva e emocional, oferecendo um cuidado individualizado, seguro e focado em resultados sustentáveis.</p>
     </div>
   `;
 }
@@ -356,6 +390,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (pagina === "emagrecimento") {
     renderizarTratamentos();
     renderizarFaq();
+  }
+  if (pagina === "tecnologias") {
+    renderizarTecnologias();
   }
   if (pagina === "equipe") {
     renderizarEquipe("listaEquipeCompleta", true);
